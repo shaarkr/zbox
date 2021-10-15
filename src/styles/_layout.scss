@@ -14,10 +14,9 @@ body {
 .drawer {
   flex-basis: 3%;
   background-color: $color-secondary;
-  transition: all 100ms ease-out;
 
   &.expand {
-    flex-basis: 15%;
+    flex-basis: 18%;
     background-color: $color-secondary-light;
   }
 }
@@ -36,6 +35,6 @@ body {
 }
 
 .sidebar {
-  flex-basis: 20%;
+  flex-basis: 25%;
   background-color: $color-primary-light;
 }

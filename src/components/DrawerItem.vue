@@ -1,0 +1,61 @@
+<template>
+  <li class="item">
+    <div class="item-icon">
+      <i class="fa" :class="iconName"></i>
+    </div>
+    <p class="item-name" v-if="show">{{ name }}</p>
+  </li>
+</template>
+
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component'
+
+@Options({
+  props: {
+    name: {
+      type: String,
+      default: '',
+    },
+    icon: {
+      type: String,
+      required: true,
+    },
+    show: {
+      type: Boolean,
+      required: true,
+    },
+  },
+})
+export default class DrawerItem extends Vue {
+  name!: string
+  icon!: string
+  show!: boolean
+
+  get iconName(): string {
+    return `fa-${this.icon}`
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+
+  &-icon {
+    height: 2rem;
+    width: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-name {
+    padding: 0 1rem;
+  }
+}
+</style>
