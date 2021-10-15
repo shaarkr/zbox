@@ -1,0 +1,49 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #777;
+  }
+}
+
+body {
+  height: 200vh;
+}
+
+button {
+  border: none;
+  outline: none;
+  font: inherit;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
