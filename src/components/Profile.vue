@@ -39,11 +39,12 @@ export default class Profile extends Vue {
 <style lang="scss" scoped>
 .profile {
   width: 100%;
-  height: 4.5rem;
+  height: 4rem;
   overflow: hidden;
   display: flex;
   align-items: center;
   padding: 0rem 0.75rem;
+  margin: 0.5rem 0;
 
   &-icon {
     width: 2rem;

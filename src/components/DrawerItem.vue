@@ -44,6 +44,16 @@ export default class DrawerItem extends Vue {
   align-items: center;
   cursor: pointer;
   padding: 0.5rem 0.75rem;
+  transition: background-color 200ms ease-out;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: $color-grey-dark;
+  }
+
+  &.active {
+    background-color: $color-accent;
+  }
 
   &-icon {
     height: 2rem;
