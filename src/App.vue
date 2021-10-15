@@ -1,7 +1,26 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="container">
+    <drawer />
+    <info-view />
+    <feed />
+    <sidebar />
   </div>
-  <router-view />
 </template>
+
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component'
+import Drawer from '@/views/Drawer.vue'
+import InfoView from '@/views/InfoView.vue'
+import Sidebar from '@/views/Sidebar.vue'
+import Feed from '@/views/Feed.vue'
+
+@Options({
+  components: {
+    Drawer,
+    InfoView,
+    Sidebar,
+    Feed,
+  },
+})
+export default class App extends Vue {}
+</script>

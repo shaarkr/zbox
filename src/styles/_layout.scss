@@ -1,0 +1,41 @@
+body {
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $color-primary;
+  color: $color-grey-light;
+
+  display: flex;
+}
+
+.drawer {
+  flex-basis: 3%;
+  background-color: $color-secondary;
+  transition: all 100ms ease-out;
+
+  &.expand {
+    flex-basis: 15%;
+    background-color: $color-secondary-light;
+  }
+}
+
+.view {
+  flex-basis: 20%;
+}
+
+.feed {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+.sidebar {
+  flex-basis: 20%;
+  background-color: $color-primary-light;
+}
