@@ -24,8 +24,47 @@
     font-weight: 600;
   }
 
+  &-form {
+    flex: 1;
+    height: 100%;
+    cursor: pointer;
+    background-color: $color-primary-light;
+    color: $color-grey-light;
+
+    &:hover {
+      background-color: rgba($color-grey-dark, 0.8);
+      color: rgba($color-grey-light, 0.7);
+    }
+
+    &:focus-within {
+      outline: 2px solid $color-grey-light;
+    }
+  }
+
   &:active {
     transform: translateY(1px);
     box-shadow: none;
+  }
+}
+
+/* Custom List Dropdown Styles */
+.dropdown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: max-content;
+  background: $color-grey-dark;
+  box-shadow: 0 0 6px 6px #0002;
+
+  &-item {
+    display: block;
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+    transition: background-color 100ms ease-out;
+
+    &:hover {
+      background-color: $color-accent;
+    }
   }
 }

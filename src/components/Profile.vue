@@ -2,7 +2,7 @@
   <div class="profile">
     <div class="profile-icon">
       <img
-        src="https://picsum.photos/100/200.webp"
+        src="https://picsum.photos/200.webp"
         alt="profile image"
         class="profile-image"
       />

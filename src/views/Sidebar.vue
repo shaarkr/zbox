@@ -5,7 +5,7 @@
         <friends-list />
       </vue-tab>
       <vue-tab label="users">
-        <h1>Parties</h1>
+        <parties />
       </vue-tab>
       <vue-tab label="comments">
         <h1>Messages</h1>
@@ -22,12 +22,14 @@ import { Options, Vue } from 'vue-class-component'
 import VueTabs from '@/components/VueTabs.vue'
 import VueTab from '@/components/VueTab.vue'
 import FriendsList from '@/components/tabs/FriendsList.vue'
+import Parties from '@/components/tabs/Parties.vue'
 
 @Options({
   components: {
     VueTabs,
     VueTab,
     FriendsList,
+    Parties,
   },
 })
 export default class Sidebar extends Vue {}

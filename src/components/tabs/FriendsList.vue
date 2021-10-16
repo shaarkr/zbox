@@ -1,26 +1,19 @@
 <template>
   <section class="section" @click.capture="open = false">
     <h2 class="section-title">Friends & clubs</h2>
-    <div class="input-group">
-      <input
-        v-model="searchInput"
-        type="text"
-        placeholder="Find clubs or people"
-        class="input-control"
-      />
-      <div class="input-append">
-        <i class="input-clear fa fa-times" v-if="searchInput"></i>
-        <i class="input-search fa fa-search"></i>
-      </div>
-    </div>
+    <search-input
+      v-model.trim="searchInput"
+      placeholder="Find clubs or people"
+      @search="handleSearch"
+    />
     <div class="section-filter">
       <p class="section-filter-item selected" @click="open = !open">
         <span>{{ filterName }}</span>
         <i class="fa fa-angle-down"></i>
       </p>
-      <ul class="wrapper" v-if="open" @click.capture="handleFilter">
+      <ul class="dropdown" v-if="open" @click.capture="handleFilter">
         <li
-          class="section-filter-item"
+          class="dropdown-item"
           v-for="(item, idx) in filterKeys"
           :key="idx"
           :data-value="item"
@@ -29,18 +22,76 @@
         </li>
       </ul>
     </div>
+    <!-- TODO: Loop based on data -->
+    <section-card
+      title="Suggestions"
+      option="See all"
+      icon="th"
+      :cards="suggestions"
+    />
+    <section-card title="Friends" :cards="offline" />
   </section>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-import { Filters, AvailableFilters } from '@/constants/data'
+import SectionCard from '@/components/SectionCard.vue'
+import SearchInput from '@/components/SearchInput.vue'
 
-@Options({})
+import { Filters, AvailableFilters } from '@/constants/data'
+import { SectionCardType } from '@/constants/interfaces'
+
+@Options({
+  components: {
+    SectionCard,
+    SearchInput,
+  },
+})
 export default class FriendsList extends Vue {
   searchInput = ''
   open = false
   selectedFilter: Filters = 'all'
+
+  // TODO: Organize data into a constant file or API service
+  suggestions: SectionCardType[] = [
+    {
+      id: 1,
+      icon: 'https://picsum.photos/200',
+      message: 'Link Facebook account',
+      status: 'Find Facebook friends',
+    },
+    {
+      id: 2,
+      icon: 'https://picsum.photos/230',
+      message: 'Link Google account',
+      status: 'Find contacts on Google',
+    },
+  ]
+  offline: SectionCardType[] = [
+    {
+      id: 1,
+      icon: 'https://picsum.photos/210',
+      message: 'Major Nelson',
+      status: 'Last seen 11h ago: Home',
+    },
+    {
+      id: 2,
+      icon: 'https://picsum.photos/220',
+      message: 'Random',
+      status: 'Offline',
+    },
+    {
+      id: 3,
+      icon: 'https://picsum.photos/240',
+      message: 'Sharath',
+      status: 'Online',
+    },
+  ]
+
+  handleSearch(query: string): void {
+    if (!query) return
+    // TODO: Filter Cards
+  }
 
   handleFilter(evt: Event): void {
     const target = evt.target as HTMLUListElement
@@ -67,65 +118,9 @@ export default class FriendsList extends Vue {
   height: 100%;
   padding: 1rem;
 
-  &-title {
-    display: inline-block;
-    padding: 1.5rem 0;
-    font-weight: 400;
-    font-size: 1.15rem;
-  }
-
-  .input {
-    &-group {
-      position: relative;
-      height: 3rem;
-      width: calc(100% + 2rem);
-      margin: 0 -1rem;
-      color: $color-grey-light;
-      line-height: 1.15;
-    }
-
-    &-control {
-      height: 100%;
-      width: 100%;
-      padding: 0.5rem 0;
-      padding-right: 6rem;
-      padding-left: 1rem;
-      background-color: $color-primary-light;
-      border-top: solid 1px rgba($color-grey-light, 0.15);
-      border-bottom: solid 1px rgba($color-grey-light, 0.15);
-      color: currentColor;
-      font-size: 1rem;
-    }
-
-    &-append {
-      height: 100%;
-      position: absolute;
-      right: 0;
-      top: 0;
-      color: currentColor;
-    }
-
-    &-search {
-      transform: scaleX(-1);
-    }
-
-    &-clear,
-    &-search {
-      height: 3rem;
-      width: 2.5rem;
-      line-height: 3rem;
-      text-align: center;
-      font-size: 1rem;
-
-      &:hover {
-        cursor: pointer;
-        background-color: rgba($color-grey-dark, 0.7);
-      }
-    }
-  }
-
   &-filter {
     height: 2rem;
+    margin-bottom: 1.5rem;
     max-width: max-content;
     line-height: 2rem;
     position: relative;
@@ -143,26 +138,11 @@ export default class FriendsList extends Vue {
         margin-left: 1.5rem;
       }
     }
+  }
 
-    .wrapper {
-      position: absolute;
-      top: 2px;
-      left: -0.5rem;
-      right: 0;
-      width: max-content;
-      background: $color-grey-dark;
-      box-shadow: 0 0 6px 6px #0003;
-
-      li {
-        display: block;
-        padding: 0.5rem 1.25rem;
-        transition: background-color 100ms ease-out;
-
-        &:hover {
-          background-color: $color-accent;
-        }
-      }
-    }
+  .dropdown {
+    top: 2px;
+    left: -0.5rem;
   }
 }
 </style>

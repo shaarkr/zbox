@@ -31,8 +31,12 @@
         </textarea>
       </div>
       <div class="editor-actions">
-        <button type="submit" class="editor-submit">Post</button>
-        <button type="reset" class="editor-cancel" @click="resetEditor">
+        <button type="submit" class="btn-form editor-submit">Post</button>
+        <button
+          type="reset"
+          class="btn-form editor-cancel"
+          @click="resetEditor"
+        >
           Cancel
         </button>
       </div>
@@ -158,22 +162,9 @@ export default class PostEditor extends Vue {
     height: 2.5rem;
     display: flex;
     align-items: center;
+    gap: 2px;
     justify-content: space-between;
     border-top: solid 1px rgba($color-grey-light, 0.25);
-  }
-
-  &-submit,
-  &-cancel {
-    flex: 1;
-    height: 100%;
-    background-color: $color-primary-light;
-    color: $color-grey-light;
-    cursor: pointer;
-
-    &:hover {
-      background-color: rgba($color-grey-dark, 0.8);
-      color: rgba($color-grey-light, 0.7);
-    }
   }
 
   &-submit {
