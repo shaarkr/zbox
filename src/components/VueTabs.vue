@@ -62,7 +62,7 @@ export default class VueTabs extends Vue {
 .tabs {
   display: flex;
   align-items: center;
-  height: 2.5rem;
+  height: $metric-tabs-bar;
 
   &-item {
     flex: 1;
@@ -90,9 +90,8 @@ export default class VueTabs extends Vue {
 
   &-container {
     position: relative;
-    height: calc(100vh - 2.5rem);
-    overflow-x: hidden;
-    overflow-y: auto;
+    height: $metric-tabs-height;
+    overflow: hidden;
   }
 
   &-wrapper {

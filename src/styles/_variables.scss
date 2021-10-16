@@ -17,3 +17,6 @@ $placeholder-gradient: linear-gradient(
   rgba($color-accent, 0.45) 70%,
   transparent 100%
 );
+
+$metric-tabs-bar: 2.5rem;
+$metric-tabs-height: calc(100vh - 2.5rem);

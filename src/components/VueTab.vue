@@ -45,6 +45,7 @@ export default class VueTab extends Vue {
 
   mounted(): void {
     this.addComponent(this.$el)
+    console.log(getComputedStyle(this.$el).height)
   }
 }
 </script>
@@ -53,9 +54,9 @@ export default class VueTab extends Vue {
 .content {
   flex: 1 0 100%;
   width: 100%;
-  max-height: calc(100vh - 2.5rem);
-  padding: 1rem;
-
-  background: orangered;
+  height: $metric-tabs-height;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
 }
 </style>
