@@ -65,7 +65,7 @@ export default class Feed extends Vue {
   }
 
   &-posts {
-    margin-top: 4px;
+    margin-top: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: stretch;

@@ -3,7 +3,7 @@
     <header class="post-header">
       <img
         src="https://picsum.photos/100/200.webp"
-        alt="user profile avatar"
+        alt=""
         class="user-avatar"
         loading="lazy"
       />
@@ -33,6 +33,11 @@
       <a href="#post-id" class="post-link" target="_blank" noreferrer>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit.
       </a>
+      <div class="post-metrics">
+        <i class="far fa-gem"></i>
+        <i class="fab fa-google"></i>
+        <strong>50</strong>
+      </div>
     </figure>
 
     <div class="post-stats">
@@ -67,12 +72,13 @@ export default class Post extends Vue {}
 <style lang="scss" scoped>
 .post {
   width: 100%;
+  min-height: 10rem;
   margin-bottom: 0.5rem;
   color: $color-grey-light;
   background-color: $color-primary-light;
 
   &-header {
-    max-height: 4rem;
+    height: 4rem;
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
@@ -87,6 +93,7 @@ export default class Post extends Vue {}
         aspect-ratio: 1/1;
         border-radius: 50%;
         object-fit: cover;
+        background-image: $placeholder-gradient;
       }
 
       &-info {
@@ -117,6 +124,7 @@ export default class Post extends Vue {}
     word-break: break-word;
 
     p {
+      min-height: 4rem;
       max-height: 6.5rem;
       width: 100%;
       overflow: hidden;
@@ -128,13 +136,14 @@ export default class Post extends Vue {}
 
     position: relative;
     width: 100%;
-    max-height: $image-height;
+    height: $image-height;
 
     img {
       width: 100%;
       height: 100%;
       max-height: $image-height;
       object-fit: cover;
+      background-image: $placeholder-gradient;
     }
 
     figcaption {
@@ -151,13 +160,12 @@ export default class Post extends Vue {}
       bottom: 0;
       left: 0;
       right: 0;
-      height: 60%;
+      height: 40%;
       background: rgba($color-primary, 0.8);
       background: linear-gradient(
         to top,
-        rgba($color-primary, 0.8) 21%,
-        rgba($color-primary, 0.7) 43%,
-        rgba($color-primary, 0.55) 68%,
+        rgba($color-primary, 0.7) 21%,
+        rgba($color-primary, 0.5) 43%,
         transparent 100%
       );
     }
@@ -166,7 +174,7 @@ export default class Post extends Vue {}
   &-link {
     max-width: 56ch;
     position: absolute;
-    z-index: 1;
+    z-index: 3;
     left: 0;
     bottom: 0;
     margin: 0 1rem 1.5rem;
@@ -180,6 +188,27 @@ export default class Post extends Vue {}
       background-clip: text;
       -webkit-text-fill-color: transparent;
       color: transparent;
+    }
+  }
+
+  &-metrics {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.5rem;
+    font-family: 'Noto Sans', sans-serif;
+    color: rgba($color-grey-light, 0.8);
+
+    & > * + * {
+      margin-left: 1rem;
     }
   }
 

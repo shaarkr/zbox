@@ -9,3 +9,11 @@ $color-red: #eb4910;
 
 $color-grey-light: #f7f7f7;
 $color-grey-dark: #2f2e30;
+
+$placeholder-gradient: linear-gradient(
+  to bottom,
+  rgba($color-accent, 0.8) 10%,
+  rgba($color-accent, 0.7) 40%,
+  rgba($color-accent, 0.45) 70%,
+  transparent 100%
+);
