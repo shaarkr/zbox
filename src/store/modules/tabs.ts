@@ -12,9 +12,12 @@ export default class Tabs extends VuexModule {
 
   @Mutation
   [TabsMutations.SET_LABEL](payload: Payload): void {
-    const length = this.tabs.labels.push(payload.label)
+    const isExisting = this.tabs.labels.includes(payload.label)
+    if (isExisting) return
+
+    this.tabs.labels.push(payload.label)
     if (payload.active) {
-      this.tabs.active = length - 1
+      this.tabs.active = this.tabs.labels.length - 1
     }
   }
 
@@ -28,17 +31,17 @@ export default class Tabs extends VuexModule {
     this.tabs.active = index
   }
 
-  @Action({ rawError: true })
+  @Action
   [TabsActions.UPDATE_LABEL](payload: Payload): void {
     this.context.commit(TabsMutations.SET_LABEL, payload)
   }
 
-  @Action({ rawError: true })
+  @Action
   [TabsActions.UPDATE_ELEMENT](element: HTMLElement): void {
     this.context.commit(TabsMutations.SET_ELEMENT, element)
   }
 
-  @Action({ rawError: true })
+  @Action
   [TabsActions.UPDATE_ACTIVE](index: number): void {
     this.context.commit(TabsMutations.SET_ACTIVE, index)
   }

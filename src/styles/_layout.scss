@@ -37,5 +37,6 @@ body {
 
 .sidebar {
   flex-basis: 25%;
+  max-width: 20rem;
   background-color: $color-primary-light;
 }

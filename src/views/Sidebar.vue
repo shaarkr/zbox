@@ -1,31 +1,17 @@
 <template>
   <aside class="sidebar">
     <vue-tabs>
-      <vue-tab label="first">
-        <h1>First</h1>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit,
-          corporis!
-        </div>
+      <vue-tab label="user-friends" :active="true">
+        <h1>Friends List</h1>
       </vue-tab>
-      <vue-tab label="second">
-        <h1>Second</h1>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit,
-          corporis! Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Asperiores voluptatum, dolore provident sequi incidunt mollitia odit
-          minus facere itaque reprehenderit minima aperiam nihil numquam veniam
-          porro assumenda doloribus quidem id!
-        </div>
+      <vue-tab label="users">
+        <h1>Parties</h1>
       </vue-tab>
-      <vue-tab label="third" :active="true">
-        <h1>Third</h1>
-        <div>
-          Далеко-далеко за словесными горами в стране гласных, и согласных живут
-          рыбные тексты. Жаренные свой гор деревни о всеми, бросил власти одна
-          коварный имени, над, несколько путь которой щеке предложения залетают
-          вершину первую.
-        </div>
+      <vue-tab label="comments">
+        <h1>Messages</h1>
+      </vue-tab>
+      <vue-tab label="bell">
+        <h1>Alerts</h1>
       </vue-tab>
     </vue-tabs>
   </aside>

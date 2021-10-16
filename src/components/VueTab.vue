@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-content">
+  <div class="content">
     <slot />
   </div>
 </template>
@@ -35,15 +35,27 @@ export default class VueTab extends Vue {
   // eslint-disable-next-line no-unused-vars
   addComponent!: (element: HTMLElement) => void
 
-  mounted(): void {
+  created(): void {
     const payload = {
       label: this.label,
       active: this.active,
     }
     this.addLabel(payload)
+  }
+
+  mounted(): void {
     this.addComponent(this.$el)
   }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.content {
+  flex: 1 0 100%;
+  width: 100%;
+  max-height: calc(100vh - 2.5rem);
+  padding: 1rem;
+
+  background: orangered;
+}
+</style>
