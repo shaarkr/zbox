@@ -30,7 +30,7 @@
         loading="lazy"
       />
       <figcaption class="visually-hidden">a random image</figcaption>
-      <a href="#post-id" class="post-link" target="_blank" noreferrer>
+      <a href="#" class="post-link" target="_blank" noreferrer>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit.
       </a>
       <div class="post-metrics">
