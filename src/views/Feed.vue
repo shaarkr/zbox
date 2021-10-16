@@ -7,20 +7,26 @@
         <span>Customise</span>
       </p>
     </header>
-    <input-post @post="handlePost" />
-    <ul v-if="posts.length">
-      <li v-for="(post, idx) in posts" :key="idx">{{ post }}</li>
+    <post-editor @post="handlePost" />
+    <ul class="feed-posts">
+      <post />
+      <post />
+      <post />
+      <post />
+      <post />
     </ul>
   </main>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-import InputPost from '@/components/InputPost.vue'
+import PostEditor from '@/components/PostEditor.vue'
+import Post from '@/components/Post.vue'
 
 @Options({
   components: {
-    InputPost,
+    PostEditor,
+    Post,
   },
 })
 export default class Feed extends Vue {
@@ -56,6 +62,14 @@ export default class Feed extends Vue {
       cursor: pointer;
       opacity: 0.5;
     }
+  }
+
+  &-posts {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
   }
 }
 </style>

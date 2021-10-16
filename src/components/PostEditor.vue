@@ -46,7 +46,7 @@ import { Options, Vue } from 'vue-class-component'
 @Options({
   emits: ['post'],
 })
-export default class InputPost extends Vue {
+export default class PostEditor extends Vue {
   edit = false
   postData = ''
 
