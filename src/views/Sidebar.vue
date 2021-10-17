@@ -8,7 +8,7 @@
         <parties />
       </vue-tab>
       <vue-tab label="comments">
-        <h1>Messages</h1>
+        <messages />
       </vue-tab>
       <vue-tab label="bell">
         <h1>Alerts</h1>
@@ -23,6 +23,7 @@ import VueTabs from '@/components/VueTabs.vue'
 import VueTab from '@/components/VueTab.vue'
 import FriendsList from '@/components/tabs/FriendsList.vue'
 import Parties from '@/components/tabs/Parties.vue'
+import Messages from '@/components/tabs/Messages.vue'
 
 @Options({
   components: {
@@ -30,6 +31,7 @@ import Parties from '@/components/tabs/Parties.vue'
     VueTab,
     FriendsList,
     Parties,
+    Messages,
   },
 })
 export default class Sidebar extends Vue {}
