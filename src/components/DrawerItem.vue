@@ -4,6 +4,9 @@
       <i class="fa" :class="iconName"></i>
     </div>
     <p class="item-name" v-if="show">{{ name }}</p>
+    <div class="item-icon" v-if="dropdown">
+      <i class="fa fa-angle-down"></i>
+    </div>
   </li>
 </template>
 
@@ -22,7 +25,11 @@ import { Options, Vue } from 'vue-class-component'
     },
     show: {
       type: Boolean,
-      required: true,
+      default: true,
+    },
+    dropdown: {
+      type: Boolean,
+      default: false,
     },
   },
 })
@@ -66,6 +73,7 @@ export default class DrawerItem extends Vue {
 
   &-name {
     padding: 0 1rem;
+    flex: 1;
   }
 }
 </style>

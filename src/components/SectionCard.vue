@@ -1,6 +1,6 @@
 <template>
   <article class="card">
-    <header class="card-header">
+    <header class="card-header" v-if="title">
       <p v-if="title === 'Offline'">
         {{ title }} <span v-if="cardsCounter > 1">({{ cardsCounter }})</span>
       </p>
@@ -15,10 +15,18 @@
     </header>
     <ul class="card-list">
       <li class="card-item" v-for="(item, idx) in cards" :key="idx">
-        <img :src="item.icon" alt="" class="card-item-icon" loading="lazy" />
+        <img
+          :src="item.icon"
+          alt=""
+          class="card-item-icon"
+          :class="{ large }"
+          loading="lazy"
+        />
         <div class="card-item-info">
-          <p class="card-item-message">{{ item.message }}</p>
-          <p class="card-item-status">{{ item.status }}</p>
+          <p class="card-item-message" :class="{ large }">{{ item.message }}</p>
+          <p class="card-item-status" v-if="item.status && !large">
+            {{ item.status }}
+          </p>
         </div>
       </li>
     </ul>
@@ -34,7 +42,7 @@ import { SectionCardType } from '@/constants/interfaces'
   props: {
     title: {
       type: String,
-      required: true,
+      default: '',
     },
     icon: {
       type: String,
@@ -48,12 +56,17 @@ import { SectionCardType } from '@/constants/interfaces'
       type: Array as PropType<SectionCardType[]>,
       default: [],
     },
+    large: {
+      type: Boolean,
+      default: false,
+    },
   },
 })
 export default class SectionCard extends Vue {
   title!: string
   icon!: string
   option!: string
+  large!: boolean
   cards!: SectionCardType[]
 
   get iconName(): string {
@@ -100,7 +113,7 @@ export default class SectionCard extends Vue {
   }
 
   &-item {
-    padding: 0.5rem 1rem;
+    padding: 4px 1rem;
     display: flex;
     align-items: center;
     transition: background-color 100ms ease-out;
@@ -112,6 +125,12 @@ export default class SectionCard extends Vue {
       margin-right: 1rem;
       border-radius: 50%;
       background-image: $placeholder-gradient;
+
+      &.large {
+        height: 4.5rem;
+        border-radius: unset;
+        margin-right: 0.5rem;
+      }
     }
 
     &-info {
@@ -124,6 +143,14 @@ export default class SectionCard extends Vue {
       font-size: 1rem;
       margin-bottom: 4px;
       font-weight: 500;
+
+      &.large {
+        font-size: 0.85rem;
+        max-width: 26ch;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
 
     &-status {

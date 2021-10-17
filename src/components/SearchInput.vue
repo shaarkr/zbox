@@ -1,22 +1,20 @@
 <template>
-  <div class="input-group">
-    <input
-      :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
-      type="text"
-      :placeholder="placeholder"
-      class="input-control"
-    />
-    <div class="input-append">
-      <i
-        class="input-clear fa fa-times"
-        v-if="modelValue"
-        @click="$emit('update:modelValue', '')"
-      ></i>
-      <i
-        class="input-search fa fa-search"
-        @click="$emit('search', modelValue.trim().toLowerCase())"
-      ></i>
+  <div class="wrapper">
+    <label for="search" v-if="label" class="input-label">{{ label }}</label>
+    <div class="input-group">
+      <input
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
+        type="text"
+        :placeholder="placeholder"
+        id="search"
+        class="input-control"
+        @keypress.enter="handleSearch"
+      />
+      <div class="input-append">
+        <i class="input-clear fa fa-times" v-if="modelValue" @click="clear"></i>
+        <i class="input-search fa fa-search" @click="handleSearch"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -33,11 +31,24 @@ import { Options, Vue } from 'vue-class-component'
       type: String,
       default: 'Search',
     },
+    label: {
+      type: String,
+      default: '',
+    },
   },
   emits: ['update:modelValue', 'search'],
 })
 export default class SearchInput extends Vue {
   modelValue!: string
+
+  handleSearch(): void {
+    this.$emit('search', this.modelValue.trim().toLowerCase())
+    this.clear()
+  }
+
+  clear(): void {
+    this.$emit('update:modelValue', '')
+  }
 }
 </script>
 
@@ -63,6 +74,15 @@ export default class SearchInput extends Vue {
     border-bottom: solid 1px rgba($color-grey-light, 0.15);
     color: currentColor;
     font-size: 1rem;
+  }
+
+  &-label {
+    display: inline-block;
+    height: 1rem;
+    margin-bottom: 0.75rem;
+    line-height: 1rem;
+    font-size: 0.85rem;
+    color: $color-grey-light;
   }
 
   &-append {
