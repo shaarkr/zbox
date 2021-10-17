@@ -11,7 +11,7 @@
         <messages />
       </vue-tab>
       <vue-tab label="bell">
-        <h1>Alerts</h1>
+        <notifications />
       </vue-tab>
     </vue-tabs>
   </aside>
@@ -24,6 +24,7 @@ import VueTab from '@/components/VueTab.vue'
 import FriendsList from '@/components/tabs/FriendsList.vue'
 import Parties from '@/components/tabs/Parties.vue'
 import Messages from '@/components/tabs/Messages.vue'
+import Notifications from '@/components/tabs/Notifications.vue'
 
 @Options({
   components: {
@@ -32,6 +33,7 @@ import Messages from '@/components/tabs/Messages.vue'
     FriendsList,
     Parties,
     Messages,
+    Notifications,
   },
 })
 export default class Sidebar extends Vue {}

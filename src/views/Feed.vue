@@ -41,13 +41,13 @@ export default class Feed extends Vue {
 <style lang="scss" scoped>
 .feed {
   &-container {
-    padding: 1.5rem;
+    padding: 0.5rem 1.5rem;
   }
 
   &-header {
     height: 2rem;
     padding-right: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;

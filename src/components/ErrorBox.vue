@@ -42,7 +42,7 @@ export default class ErrorBox extends Vue {
   max-height: 15rem;
   width: 100%;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 2rem 0;
   text-align: center;
   display: flex;
   flex-direction: column;

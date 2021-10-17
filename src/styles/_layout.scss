@@ -14,7 +14,6 @@ body {
 .drawer {
   flex-basis: 3%;
   background-color: $color-secondary;
-  transition: flex-basis 100ms ease;
 
   &.expand {
     flex-basis: 18%;
