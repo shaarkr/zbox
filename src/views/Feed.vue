@@ -2,7 +2,7 @@
   <main class="feed feed-container">
     <header class="feed-header">
       <p class="feed-name">Activity feed</p>
-      <p class="feed-filter">
+      <p class="feed-filter" @click="showModal = true">
         <i class="fa fa-filter"></i>
         <span>Customise</span>
       </p>
@@ -16,20 +16,26 @@
       <post />
     </ul>
   </main>
+  <modal v-if="showModal" @close="showModal = false">
+    <post />
+  </modal>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
 import PostEditor from '@/components/PostEditor.vue'
 import Post from '@/components/Post.vue'
+import Modal from '@/components/Modal.vue'
 
 @Options({
   components: {
     PostEditor,
     Post,
+    Modal,
   },
 })
 export default class Feed extends Vue {
+  showModal = false
   posts: string[] = []
 
   handlePost(data: string): void {
