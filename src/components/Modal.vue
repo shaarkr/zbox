@@ -1,10 +1,16 @@
 <template>
-  <div class="modal-overlay"></div>
+  <div class="modal-overlay" />
   <div class="modal-wrapper">
     <div class="modal">
-      <i class="fa fa-times modal-close" @click="$emit('close')"></i>
+      <div class="modal-header">
+        <slot name="title">&nbsp;</slot>
+        <i class="fa fa-times modal-close" @click="$emit('close')"></i>
+      </div>
       <div class="modal-content">
-        <slot />
+        <slot name="default" />
+      </div>
+      <div class="modal-footer">
+        <slot name="footer" />
       </div>
     </div>
   </div>
@@ -22,27 +28,13 @@ export default class Modal extends Vue {}
 <style lang="scss" scoped>
 .modal {
   position: relative;
-  min-width: 16rem;
+  min-width: 30rem;
+  min-height: 25rem;
   max-width: 45rem;
   max-height: 85vh;
   background-color: $color-primary-light;
   box-shadow: 0 0 8px 4px #0003, 0 0 16px 4px #0001;
   border-radius: 2px;
-
-  &-close {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    color: $color-grey-light;
-    font-size: 1.15rem;
-    line-height: 1;
-    cursor: pointer;
-    z-index: 250;
-
-    &:hover {
-      color: rgba($color-grey-light, 0.5);
-    }
-  }
 
   &-overlay {
     position: fixed;
@@ -68,11 +60,44 @@ export default class Modal extends Vue {}
     z-index: 200;
   }
 
-  &-content {
-    height: 100%;
+  &-header {
+    height: 2.5rem;
     width: 100%;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-content {
+    padding: 0.5rem 1rem;
     overflow-y: auto;
     scrollbar-width: none;
+  }
+
+  &-footer {
+    position: absolute;
+    bottom: 0;
+    height: 2.5rem;
+    width: 100%;
+    border-top: solid 1px rgba($color-grey-light, 0.1);
+
+    font-size: 1rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-close {
+    color: $color-grey-light;
+    font-size: 1.15rem;
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover {
+      color: rgba($color-grey-light, 0.5);
+    }
   }
 }
 </style>

@@ -10,14 +10,15 @@
     <post-editor @post="handlePost" />
     <ul class="feed-posts">
       <post />
-      <post />
-      <post />
-      <post />
-      <post />
     </ul>
   </main>
   <modal v-if="showModal" @close="showModal = false">
-    <post />
+    <template v-slot:default>
+      <customise-panel />
+    </template>
+    <template v-slot:footer>
+      <button type="submit" class="btn-form">Post</button>
+    </template>
   </modal>
 </template>
 
@@ -26,12 +27,14 @@ import { Options, Vue } from 'vue-class-component'
 import PostEditor from '@/components/PostEditor.vue'
 import Post from '@/components/Post.vue'
 import Modal from '@/components/Modal.vue'
+import CustomisePanel from '@/components/CustomisePanel.vue'
 
 @Options({
   components: {
     PostEditor,
     Post,
     Modal,
+    CustomisePanel,
   },
 })
 export default class Feed extends Vue {
