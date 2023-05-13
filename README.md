@@ -2,6 +2,10 @@
 A clone of the new Xbox app for Windows 10, built using Vue 3 and TypeScript
 
 
+# Live Demo
+## [ZBox - Preview (static)](https://zbox-wm.netlify.app)
+
+
 # Screenshots
 
 <img src="./demo/zbox.png" width="400" />
@@ -11,6 +15,10 @@ A clone of the new Xbox app for Windows 10, built using Vue 3 and TypeScript
 <img src="./demo/zbox-2.png" width="400" />
 
 ---
+
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1907fd61-ff55-4b1f-87bb-89002f81b61a/deploy-status)](https://app.netlify.com/sites/zbox-wm/deploys)
+
 
 ## Project setup
 ```
